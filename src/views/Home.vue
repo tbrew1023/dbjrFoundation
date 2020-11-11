@@ -8,10 +8,10 @@ export default {
       waveLeft: true,
       options: {
         normalScrollElements: '.test-container, .modal-active, .modal-inactive, .more-work-grid, .more-work-container, .modal-images',
-        controlArrows: true,
         loopHorizontal: false,
         scrollingSpeed: 1500,
-        slidesNavigation: true,
+        slidesNavigation: false,
+        controlArrows: false,
         navigation: true,
         fadingEffect: true,
         navigationPosition: 'left',
@@ -38,6 +38,11 @@ export default {
       currentProjectTitle: '',
       scrollOverflow: false,
       context: 0,
+      images: [
+        'https://earthsky.org/upl/2020/06/ocean-apr27-2020-Cidy-Chai-North-Pacific-sq.jpeg',
+        'https://images.theconversation.com/files/295442/original/file-20191003-52796-1763ajl.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip',
+        'https://upload.wikimedia.org/wikipedia/commons/e/e0/Clouds_over_the_Atlantic_Ocean.jpg'
+      ]
     }
   },
   props: {
@@ -51,6 +56,15 @@ export default {
   },
   mounted() {
     this.hideNav = false; //hide nav on landing page?
+    //var i = 0;
+    /*setInterval(() => {
+      document.getElementById('big-image').style.backgroundImage = 'url('+this.images[i]+')';
+      if(i == this.images.length - 1) {
+        i = 0;
+      } else {
+        i++;
+      }
+    }, 5000);*/
   },
   computed: {
 
@@ -171,7 +185,7 @@ export default {
     <full-page ref="fullpage" :options="options" id="fullpage">
 
       <!-- Section 1 (landing page) -->
-      <section style="background: #181818" class="section landing">
+      <section style="background: linear-gradient(#000, #111)" class="section landing">
         <div class="landing-container" :class="enterOn(1, 'default')">
           <div class="logo"></div>
           <p class="subtitle">This is a subtitle for the landing page of the site. A mission statement.</p>
@@ -184,12 +198,12 @@ export default {
       </section>
       
       <!-- About -->
-      <section style="background: #222" class="section">
+      <section style="background: linear-gradient(#111, #222)" class="section">
         <div class="slide">
           <div class="page-container">
             <div class="about-container">
-              <div class="image-slides full-image" :class="enterOn(2, 'big-image')"></div>
               <div class="about-text" :class="enterOn(2, 'default')"><p>This is a summary of the mission of the foundation, as well as a profile on Derrick Jr. This section should tell the story of the inception of the foundation, and Derrick Jr's life.</p></div>
+              <div id="big-image" class="image-slides full-image" :class="enterOn(2, 'big-image')"></div>
             </div>
           </div>        
         </div>
@@ -208,7 +222,7 @@ export default {
       </section>
 
       <!-- Donate -->
-      <section style="background: #333" class="section">
+      <section style="background: linear-gradient(#222,#333)" class="section">
         <div class="page-container">
           <div class="donation-container" :class="enterOn(3, 'default')">
             <div class="icon clock"></div>
@@ -219,17 +233,17 @@ export default {
 
       <!-- Section 4 w slides -->
       <section class="section">
-        <div style="background: #444" class="slide">
+        <div style="background: linear-gradient(#333,#444)" class="slide">
           <div class="page-container">
             Resource page 1
           </div>        
         </div>
-        <div style="background: #444" class="slide">
+        <div style="background: linear-gradient(#333,#444)" class="slide">
           <div class="page-container">
             Resource page 2
           </div>        
         </div>
-        <div style="background: #444" class="slide">
+        <div style="background: linear-gradient(#333,#444)" class="slide">
           <div class="page-container">
             <div class="page-container">
               Resource page 3
@@ -239,7 +253,7 @@ export default {
       </section>
 
       <!-- Contact -->
-      <section style="background: #555" class="section">
+      <section style="background: linear-gradient(#444,#555)" class="section">
         <div class="page-container">
           Contact information
         </div>
@@ -275,20 +289,20 @@ $buttonHeight: 50px;
   //background: #444;
 
   p {
-    width: 400px;
+    width: 420px;
   }
 }
 
 
 .image-slides {
   height: 100vh;
-  background-image: $manman1;
-  filter: brightness(0.5);
+  background-image: url('../assets/manman/illustration.png');
+  filter: brightness(0.7) grayscale(1);
 }
 
 .donation-container {
   border-radius: $rad;
-  background: rgba(white, 0.1);
+  background: rgba(white, 0.05);
   width: 60%;
   height: 60%;
   display: flex;

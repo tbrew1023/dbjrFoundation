@@ -72,12 +72,13 @@ $drag: 2s;
 
 .big-image-stage {
   width: 0%;
-  transition-delay: 1.2s !important;
+  //transition-delay: 1.2s !important;
+  filter: brightness(0) !important;
   transition: 1s !important;
 }
 
 .big-image-enter {
-  width: 70%;
+  width: 60%;
   transition-delay: 500ms !important;
   transition: 3s $ezpz;
 }
@@ -103,14 +104,14 @@ $drag: 2s;
 
 .insta {
     background-image: url("../assets/i.png");
-    background-size: 135% !important;
+    background-size: 125% !important;
     filter: invert(1);
   }
   
   .fb {
     background-image: url("../assets/f.png");
     filter: invert(1);
-    background-size: 130% !important;
+    background-size: 120% !important;
   }
   
   .li {

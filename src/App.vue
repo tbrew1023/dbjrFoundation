@@ -125,7 +125,7 @@ html {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  right: 64px !important;
+  right: 100px !important;
   bottom: 24px !important;
 }
 
@@ -139,7 +139,7 @@ html {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  left: 64px !important;
+  left: 100px !important;
   bottom: 24px !important;
 }
 
