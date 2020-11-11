@@ -1,3 +1,5 @@
+
+
 // ---------- colors ----------
 
 $colorMain: "";
@@ -19,10 +21,66 @@ $pad: 64px;
 
 // ---------- animations ----------
 
+$quick: 300ms;
+$slow: 1s;
+$drag: 2s;
+
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// ---------- staging ----------
+
+.enter {
+  opacity: 1 !important;
+  transform: translate(0px, 0px) scale(1) !important;
+  transition: 2s;
+}
+
+.stage-left {
+  opacity: 0 !important;
+  transform: translate(-500px, 0px) scale(0.8);
+  transition: 1.5s !important;
+  transition-delay: 0s;
+}
+
+.stage-right {
+  transform: translate(500px, 0px);
+  opacity: 0 !important;
+  transition: 2s $ezpz !important;
+  transition-delay: 0ms;
+}
+
+.stage-up {
+  opacity: 0;
+  transition: 1s;
+  transform: translate(0px, -64px);
+}
+
+.stage-down {
+  opacity: 0;
+  transition: 2s;
+  transform: translate(0px, 300px);
+}
+
+.stage-in {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: 1s;
+}
+
+.big-image-stage {
+  width: 0%;
+  transition-delay: 1.2s !important;
+  transition: 1s !important;
+}
+
+.big-image-enter {
+  width: 70%;
+  transition-delay: 500ms !important;
+  transition: 3s $ezpz;
+}
 
 // ---------- social ----------
 
@@ -36,6 +94,11 @@ $pad: 64px;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    transition: $quick;
+
+    &:hover {
+      opacity: 0.3;
+    }
   }
 
 .insta {
@@ -60,46 +123,6 @@ $pad: 64px;
   .tw {
     background-image: url("../assets/t.png");
     filter: invert(1);
-  }
-
-  // ---------- staging ----------
-
-  .enter {
-    opacity: 1 !important;
-    transform: translate(0px, 0px) scale(1) !important;
-    transition: 2s;
-  }
-  
-  .stage-left {
-    opacity: 0 !important;
-    transform: translate(-500px, 0px) scale(0.8);
-    transition: 1.5s !important;
-    transition-delay: 0s;
-  }
-  
-  .stage-right {
-    transform: translate(500px, 0px);
-    opacity: 0 !important;
-    transition: 2s $ezpz !important;
-    transition-delay: 0ms;
-  }
-
-  .stage-up {
-    opacity: 0;
-    transition: 1s;
-    transform: translate(0px, -64px);
-  }
-
-  .stage-down {
-    opacity: 0;
-    transition: 2s;
-    transform: translate(0px, 300px);
-  }
-  
-  .stage-in {
-    opacity: 0;
-    transform: scale(0.8);
-    transition: 1s;
   }
 
   // ---------- scrollbar ----------

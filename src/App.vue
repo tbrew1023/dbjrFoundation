@@ -91,6 +91,10 @@ html {
   transition: filter 1s;
 }
 
+#fullpage {
+  transition-delay: 1s;
+}
+
 .fp-slidesNav {
   z-index: 1 !important;
 
@@ -170,7 +174,7 @@ html {
 }
 
 #fp-nav {
-  margin-top: -190px !important;
+  margin-top: 0px !important;
   margin-left: 48px;
 
   li {

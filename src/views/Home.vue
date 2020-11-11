@@ -10,7 +10,7 @@ export default {
         normalScrollElements: '.test-container, .modal-active, .modal-inactive, .more-work-grid, .more-work-container, .modal-images',
         controlArrows: true,
         loopHorizontal: false,
-        scrollingSpeed: 1000,
+        scrollingSpeed: 1500,
         slidesNavigation: true,
         navigation: true,
         fadingEffect: true,
@@ -125,8 +125,14 @@ export default {
     move(section) {
       this.$refs.fullpage.api.moveTo(section)
     },
-    enterOn(section) {
-      return ( this.activeSection == (section - 1) ? 'enter' : 'stage-in' ) // TODO: adjust for up and down transitions
+    enterOn(section, context) {
+      if(context == 'default') {
+        return ( this.activeSection == (section - 1) ? 'enter' : 'stage-in' ) // TODO: adjust for up and down transitions
+      } else if(context == 'big-image') {
+        return ( this.activeSection == (section - 1) ? 'big-image-enter' : 'big-image-stage' )
+      } else {
+        console.log('invalid context');
+      }
     }
   }
 }
@@ -166,7 +172,7 @@ export default {
 
       <!-- Section 1 (landing page) -->
       <section style="background: #181818" class="section landing">
-        <div class="landing-container">
+        <div class="landing-container" :class="enterOn(1, 'default')">
           <div class="logo"></div>
           <p class="subtitle">This is a subtitle for the landing page of the site. A mission statement.</p>
           <div class="button-container">
@@ -179,10 +185,24 @@ export default {
       
       <!-- About -->
       <section style="background: #222" class="section">
-        <div class="page-container">
-          <div class="about-container" :class="enterOn(2)">
-            <div class="image-slides full-image"></div>
-            <div class="about-text"><p>This is a summary of the mission of the foundation, as well as a profile on Derrick Jr. This section should tell the story of the inception of the foundation, and Derrick Jr's life.</p></div>
+        <div class="slide">
+          <div class="page-container">
+            <div class="about-container">
+              <div class="image-slides full-image" :class="enterOn(2, 'big-image')"></div>
+              <div class="about-text" :class="enterOn(2, 'default')"><p>This is a summary of the mission of the foundation, as well as a profile on Derrick Jr. This section should tell the story of the inception of the foundation, and Derrick Jr's life.</p></div>
+            </div>
+          </div>        
+        </div>
+        <div style="background: #222" class="slide">
+          <div class="page-container">
+            About2
+          </div>        
+        </div>
+        <div style="background: #222" class="slide">
+          <div class="page-container">
+            <div class="page-container">
+              About3
+            </div>
           </div>
         </div>
       </section>
@@ -190,7 +210,7 @@ export default {
       <!-- Donate -->
       <section style="background: #333" class="section">
         <div class="page-container">
-          <div class="donation-container" :class="enterOn(3)">
+          <div class="donation-container" :class="enterOn(3, 'default')">
             <div class="icon clock"></div>
             Donation Portal is Coming Soon
           </div>
@@ -236,6 +256,7 @@ $buttonHeight: 50px;
 
 .about-container {
   display: flex;
+  width: 100%;
 }
 
 .clock {
@@ -244,21 +265,25 @@ $buttonHeight: 50px;
 }
 
 .about-text {
-  width: 400px;
+  width: 100%;
   text-align: left;
   line-height: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  //background: #444;
+
+  p {
+    width: 400px;
+  }
 }
 
+
 .image-slides {
-  height: 450px;
-  width: 350px;
-  border-radius: $rad !important;
-  margin-right: 64px;
+  height: 100vh;
   background-image: $manman1;
+  filter: brightness(0.5);
 }
 
 .donation-container {
