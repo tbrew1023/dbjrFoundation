@@ -3,10 +3,10 @@
     <div :class="(unveil ? 'swoop' : '' )" class="logo-loader"></div>
     <div :class="(unveil ? 'loading-veil unveil' : 'loading-veil')">
     </div>
-    <div class="cc" :class="[ 'g-cursor', { 'g-cursor_hover': hover }, {'g-cursor_hide': hideCursor} ]">
+    <!--div class="cc" :class="[ 'g-cursor', { 'g-cursor_hover': hover }, {'g-cursor_hide': hideCursor} ]">
       <div :style="cursorCircle" class="g-cursor__circle"></div>
       <div class="g-cursor__point" ref="point" :style="cursorPoint"></div>
-    </div>
+    </div-->
     <router-view :dataRef='dataRef' />
   </div>
 </template>
@@ -98,6 +98,7 @@ html {
 }
 
 .logo-loader {
+  margin-top: 0px !important;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -115,15 +116,13 @@ html {
 }
 
 .fp-slideNav {
-  margin-bottom: 400px !important
-
   ul li a span {
     background: red !important;
   }
 }
 
 #fp-nav {
-
+  margin-top: -190px !important;
   margin-left: 48px;
 
   li {
@@ -133,7 +132,7 @@ html {
   .fp-tooltip {
     font-size: 18px !important;
     padding-left: 32px;
-    line-height: 38px;
+    line-height: 22px;
   }
 
   .active span {

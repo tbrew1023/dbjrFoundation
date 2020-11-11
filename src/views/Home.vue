@@ -14,10 +14,10 @@ export default {
         navigation: true,
         fadingEffect: true,
         navigationPosition: 'left',
-        navigationTooltips: ['Home','Section 2', 'Section 3', 'Section 4','Section 5','Section 6'],
+        navigationTooltips: ['Home','Donate', 'Section 3', 'Section 4','Section 5','Section 6'],
         showActiveTooltip: true,
         easingcss3: 'cubic-bezier(0.65, 0, 0.35, 1)', //swoopy
-        anchors: ['home','section2', 'section3', 'section4','section5','section6'],
+        anchors: ['home','donate', 'section3', 'section4','section5','section6'],
         onLeave: (origin, destination, direction) => {
           this.handleLeave(origin, destination, direction);
         },
@@ -158,9 +158,12 @@ export default {
     <full-page ref="fullpage" :options="options" id="fullpage">
 
       <!-- Section 1 (landing page) -->
-      <section style="background: blue" class="section landing">
+      <section style="background: #181818" class="section landing">
         <div class="landing-container">
-          <div @click="goDown" class="arrows hoverable"></div>
+          <div class="logo"></div>
+          <p class="subtitle">This is a subtitle for the landing page of the site. A mission statement.</p>
+          <div @click="goDown" class="landing-button">Learn More</div>
+          <!--div @click="goDown" class="arrows hoverable"></div-->
         </div>
       </section>
       
@@ -220,6 +223,49 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/variables';
 
+$buttonHeight: 60px;
+
+.subtitle {
+  width: 350px;
+  line-height: 2;
+  opacity: 0.4;
+}
+
+.logo {
+  background-image: url('../assets/sample-logo-white.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 500px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+}
+
+.landing-button {
+  color: black;
+  background: white;
+  border-radius: $buttonHeight;
+  height: $buttonHeight;;
+  width: 200px;
+  text-align: center;
+  padding: 0px;
+  line-height: $buttonHeight;
+  border: 2px solid white;
+  font-weight: bold;
+  margin-top: 12px;
+  transition: 200ms;
+  cursor: pointer;
+
+  &:hover {
+    background: transparent;
+    color: white;
+  }
+}
+
 .page-container {
   height: 100vh;
   width: 100%;
@@ -235,7 +281,7 @@ export default {
   width: 30px;
   height: 30px;
   transform: scale(0.5);
-  margin-top: 190px;
+  margin-top: 36px;
 }
 
 .arrows:before {
@@ -306,22 +352,16 @@ export default {
 }
 
 .landing-container {
-  background-image: url('../assets/sample-logo-white.png');
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 500px;
-  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
-  padding: 0px;
+  flex-direction: column;
   position: absolute;
+  margin: auto;
   left: 0px;
   right: 0px;
-  bottom: 0px;
   top: 0px;
+  bottom: 0px;
 
   h1 {
     font-size: 48px;
