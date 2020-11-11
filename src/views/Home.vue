@@ -14,10 +14,10 @@ export default {
         navigation: true,
         fadingEffect: true,
         navigationPosition: 'left',
-        navigationTooltips: ['Home','Donate', 'Section 3', 'Section 4','Section 5','Section 6'],
+        navigationTooltips: ['Home','About', 'Donate', 'Resources','Contact'],
         showActiveTooltip: true,
         easingcss3: 'cubic-bezier(0.65, 0, 0.35, 1)', //swoopy
-        anchors: ['home','donate', 'section3', 'section4','section5','section6'],
+        anchors: ['home','about', 'donate', 'resources','contact'],
         onLeave: (origin, destination, direction) => {
           this.handleLeave(origin, destination, direction);
         },
@@ -50,6 +50,9 @@ export default {
   },
   mounted() {
     this.hideNav = false; //hide nav on landing page?
+  },
+  computed: {
+
   },
   methods: {
     handleLeave(origin, destination, direction) {
@@ -118,8 +121,14 @@ export default {
       //console.log(scrollY);
       //this.bannerOffset = scrollY;
     },
-    goDown() {
-      this.$refs.fullpage.api.moveSectionDown()
+    move(section) {
+      this.$refs.fullpage.api.moveTo(section)
+    },
+    enterOn(section) {
+      console.clear();
+      console.log(section);
+      console.log('entering');
+      return ( this.activeSlide == section ? 'enter' : 'stage-in' )
     }
   }
 }
@@ -162,45 +171,46 @@ export default {
         <div class="landing-container">
           <div class="logo"></div>
           <p class="subtitle">This is a subtitle for the landing page of the site. A mission statement.</p>
-          <div @click="goDown" class="landing-button">Learn More</div>
+          <div class="button-container">
+            <div @click="move(2)" class="landing-button">Learn More</div>
+            <div @click="move(3)" class="landing-button secondary">Donate</div>
+          </div>
           <!--div @click="goDown" class="arrows hoverable"></div-->
         </div>
       </section>
       
-      <!-- Section 2 -->
-      <section style="background: green" class="section">
+      <!-- About -->
+      <section style="background: #222" class="section">
         <div class="page-container">
-          
+          <div class="about-container" :class="enterOn(2)">
+            <div class="image-slides"></div>
+            <div class="about-text">This is a summary of the mission of the foundation, as well as a profile on Derrick Jr. This section should tell the story of the inception of the foundation, and the story of Derrick Jr's life.</div>
+          </div>
         </div>
       </section>
 
-      <!-- Section 3 -->
-      <section style="background: orange" class="section">
+      <!-- Donate -->
+      <section style="background: #333" class="section">
         <div class="page-container">
-          
+          <div class="donation-container" :class="enterOn(3)">
+            Donation Portal is Coming Soon
+          </div>
         </div>
       </section>
 
-      <!-- Section 4 -->
-      <section style="background: maroon" class="section">
-        <div class="page-container">
-          
-        </div>
-      </section>
-
-      <!-- Section 5 w slides -->
+      <!-- Section 4 w slides -->
       <section class="section">
-        <div style="background: purple" class="slide">
+        <div style="background: #444" class="slide">
           <div class="page-container">
-            slide1
+            Resources
           </div>        
         </div>
-        <div style="background: darkblue" class="slide">
+        <div style="background: #444" class="slide">
           <div class="page-container">
             slide2
           </div>        
         </div>
-        <div style="background: red" class="slide">
+        <div style="background: #444" class="slide">
           <div class="page-container">
             <div class="page-container">
               slide3
@@ -209,8 +219,8 @@ export default {
         </div>
       </section>
 
-      <!-- Section 6 -->
-      <section style="background: brown" class="section">
+      <!-- Contact -->
+      <section style="background: #555" class="section">
         <div class="page-container">
           
         </div>
@@ -223,7 +233,46 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/variables';
 
-$buttonHeight: 60px;
+$buttonHeight: 50px;
+
+.about-container {
+  display: flex;
+}
+
+.about-text {
+  width: 400px;
+  text-align: left;
+  line-height: 2;
+}
+
+.image-slides {
+  height: 600px;
+  width: 400px;
+  border-radius: $rad;
+  margin-right: 36px;
+  background: black;
+}
+
+.donation-container {
+  border-radius: $rad;
+  background: rgba(white, 0.1);
+  width: 60%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.secondary {
+  background: transparent !important;
+  color: white !important;
+}
+
+.button-container {
+  display: flex;
+}
 
 .subtitle {
   width: 350px;
@@ -250,7 +299,7 @@ $buttonHeight: 60px;
   background: white;
   border-radius: $buttonHeight;
   height: $buttonHeight;;
-  width: 200px;
+  width: 150px;
   text-align: center;
   padding: 0px;
   line-height: $buttonHeight;
@@ -259,10 +308,11 @@ $buttonHeight: 60px;
   margin-top: 12px;
   transition: 200ms;
   cursor: pointer;
+  margin-left: 8px;
+  margin-right: 8px;
 
   &:hover {
-    background: transparent;
-    color: white;
+    transform: scale(0.9);
   }
 }
 

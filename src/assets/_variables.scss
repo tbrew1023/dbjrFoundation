@@ -65,8 +65,8 @@ $pad: 64px;
   // ---------- staging ----------
 
   .enter {
-    opacity: 1;
-    transform: translate(0px, 0px);
+    opacity: 1 !important;
+    transform: translate(0px, 0px) scale(1);
   }
   
   .stage-left {
@@ -98,7 +98,6 @@ $pad: 64px;
   .stage-in {
     opacity: 0;
     transition: 1s;
-    height: 250px;
   }
 
   // ---------- scrollbar ----------
