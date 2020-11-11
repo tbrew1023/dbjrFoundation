@@ -3,6 +3,7 @@ export default {
   name: 'Home',
   data() {
     return {
+      enter: false,
       waveOffset: "120vw",
       waveLeft: true,
       options: {
@@ -125,10 +126,7 @@ export default {
       this.$refs.fullpage.api.moveTo(section)
     },
     enterOn(section) {
-      console.clear();
-      console.log(section);
-      console.log('entering');
-      return ( this.activeSlide == section ? 'enter' : 'stage-in' )
+      return ( this.activeSection == (section - 1) ? 'enter' : 'stage-in' ) // TODO: adjust for up and down transitions
     }
   }
 }
@@ -183,8 +181,8 @@ export default {
       <section style="background: #222" class="section">
         <div class="page-container">
           <div class="about-container" :class="enterOn(2)">
-            <div class="image-slides"></div>
-            <div class="about-text">This is a summary of the mission of the foundation, as well as a profile on Derrick Jr. This section should tell the story of the inception of the foundation, and the story of Derrick Jr's life.</div>
+            <div class="image-slides full-image"></div>
+            <div class="about-text"><p>This is a summary of the mission of the foundation, as well as a profile on Derrick Jr. This section should tell the story of the inception of the foundation, and Derrick Jr's life.</p></div>
           </div>
         </div>
       </section>
@@ -193,6 +191,7 @@ export default {
       <section style="background: #333" class="section">
         <div class="page-container">
           <div class="donation-container" :class="enterOn(3)">
+            <div class="icon clock"></div>
             Donation Portal is Coming Soon
           </div>
         </div>
@@ -202,18 +201,18 @@ export default {
       <section class="section">
         <div style="background: #444" class="slide">
           <div class="page-container">
-            Resources
+            Resource page 1
           </div>        
         </div>
         <div style="background: #444" class="slide">
           <div class="page-container">
-            slide2
+            Resource page 2
           </div>        
         </div>
         <div style="background: #444" class="slide">
           <div class="page-container">
             <div class="page-container">
-              slide3
+              Resource page 3
             </div>
           </div>
         </div>
@@ -222,7 +221,7 @@ export default {
       <!-- Contact -->
       <section style="background: #555" class="section">
         <div class="page-container">
-          
+          Contact information
         </div>
       </section>
 
@@ -239,18 +238,27 @@ $buttonHeight: 50px;
   display: flex;
 }
 
+.clock {
+  background-image: $clock;
+  margin-bottom: 24px;
+}
+
 .about-text {
   width: 400px;
   text-align: left;
   line-height: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .image-slides {
-  height: 600px;
-  width: 400px;
-  border-radius: $rad;
-  margin-right: 36px;
-  background: black;
+  height: 450px;
+  width: 350px;
+  border-radius: $rad !important;
+  margin-right: 64px;
+  background-image: $manman1;
 }
 
 .donation-container {
@@ -259,6 +267,7 @@ $buttonHeight: 50px;
   width: 60%;
   height: 60%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;

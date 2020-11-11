@@ -91,6 +91,54 @@ html {
   transition: filter 1s;
 }
 
+.fp-slidesNav {
+  z-index: 1 !important;
+
+  ul li a {
+    margin-top: -36px;
+
+    span {
+      background: white !important;
+    }
+  }
+}
+
+.fp-controlArrow {
+  top: 91.6vh !important;
+  transition: 300ms;
+
+  &:hover {
+    opacity: 0.3;
+  }
+}
+
+.fp-next {
+  border: none;
+  height: 24px !important;
+  width: 24px !important;
+  margin: 0px;
+  background-image: url('assets/icons/arrow.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  right: 64px !important;
+  bottom: 24px !important;
+}
+
+.fp-prev {
+  border: none;
+  height: 24px !important;
+  width: 24px !important;
+  margin: 0px;
+  background-image: url('assets/icons/arrow.svg');
+  transform: rotate(180deg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  left: 64px !important;
+  bottom: 24px !important;
+}
+
 .swoop {
   transform: translate(-22px, -22px) scale(0.4) !important;
   //background: green !important;
