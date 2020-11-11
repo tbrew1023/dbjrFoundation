@@ -235,7 +235,7 @@ export default {
       <section class="section">
         <div style="background: linear-gradient(#333,#444)" class="slide">
           <div class="page-container">
-            Resource page 1
+            <p>This page will house links to relevant resources</p>
           </div>        
         </div>
         <div style="background: linear-gradient(#333,#444)" class="slide">
