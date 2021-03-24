@@ -188,7 +188,7 @@ export default {
       <section style="background: linear-gradient(#000, #111)" class="section landing">
         <div class="landing-container" :class="enterOn(1, 'default')">
           <div class="logo"></div>
-          <p class="subtitle">This is a subtitle for the landing page of the site. A mission statement.</p>
+          <p class="subtitle">Dismantling substance abuse and save young lives.</p>
           <div class="button-container">
             <div @click="move(2)" class="landing-button">Learn More</div>
             <div @click="move(3)" class="landing-button secondary">Donate</div>
@@ -202,7 +202,12 @@ export default {
         <div class="slide">
           <div class="page-container">
             <div class="about-container">
-              <div class="about-text" :class="enterOn(2, 'default')"><p>This is a summary of the mission of the foundation, as well as a profile on Derrick Jr. This section should tell the story of the inception of the foundation, and Derrick Jr's life.</p></div>
+              <div class="about-text" :class="enterOn(2, 'default')">
+                <p><b>Derrick Brew, Jr.</b>, affectionately known as “Man Man”, was born on November 22, 1995. Beloved by many, Derrick was and magnetic personality who brought joy and laughter everywhere he went.</p>
+                <p>Derrick was socially and creatively active, with passions for sports, music, dancing, content creation and more.</p>
+                <p>On the evening of October 8, 2020 in Irvine, California, Derrick peacefully parted this life. He was twenty-four years young.</p>
+                <p>The Derrick Brew Jr. Foundation aims to provide resources and outreach for drug abuse awareness, with a mission to dismantle the horrors of substance abuse.</p>
+              </div>
               <div id="big-image" class="image-slides full-image" :class="enterOn(2, 'big-image')"></div>
             </div>
           </div>        
@@ -235,20 +240,41 @@ export default {
       <section class="section">
         <div style="background: linear-gradient(#333,#444)" class="slide">
           <div class="page-container">
-            <p>This page will house links to relevant resources</p>
-          </div>        
-        </div>
-        <div style="background: linear-gradient(#333,#444)" class="slide">
-          <div class="page-container">
-            Resource page 2
-          </div>        
-        </div>
-        <div style="background: linear-gradient(#333,#444)" class="slide">
-          <div class="page-container">
-            <div class="page-container">
-              Resource page 3
+            <div class="grid-container">
+              <a href="https://nasadad.org/prevention-resources/"><div class="item item1">
+                <div class="resource-icon icon1"></div>
+                <div class="resource-title"><b>NASADAD</b> | Prevention Resources</div>
+              </div></a>
+              <a href="https://www.samhsa.gov/find-help/national-helpline"><div class="item item2">
+                <div class="resource-icon icon2"></div>
+                <div class="resource-title"><b>SAMHSA</b> | National Helpline</div>
+              </div></a>
+              <a href="https://www.drugabuse.gov/publications/principles-drug-addiction-treatment-research-based-guide-third-edition/resources"><div class="item item3">
+                <div class="resource-icon icon3"></div>
+                <div class="resource-title"><b>NIH</b> | Addiction Treatment Resources</div>
+              </div></a>
+              <a href="https://preventionlane.org/substance-abuse-prevention-online-resources"><div class="item item4">
+                <div class="resource-icon icon4"></div>
+                <div class="resource-title"><b>Prevention Lane</b> | Substance Abuse Prevention</div>
+              </div></a>
+              <a href="https://drugfreegeneration.org/"><div class="item item5">
+                <div class="resource-icon icon5"></div>
+                <div class="resource-title"><b>Drug Free Generation</b> | Prevention Resources</div>
+              </div></a>
+              <a href="https://www.campusdrugprevention.gov/resources"><div class="item item6">
+                <div class="resource-icon icon6"></div>
+                <div class="resource-title">Campus Drug Prevention</div>
+              </div></a>
+              <a href="https://www.adolescenthealth.org/Resources/Clinical-Care-Resources/Substance-Use/Substance-Use-Resources-For-Adolesc.aspx"><div class="item item7">
+                <div class="resource-icon icon7"></div>
+                <div class="resource-title"><b>SAHM</b> | Substance Use Resources For Adolescents and Young Adults</div>
+              </div></a>
+              <a href="https://youth.gov/youth-topics/substance-abuse/evidence-based-programs-youth-substance-abuse-prevention-and-treatment"><div class="item item8">
+                <div class="resource-icon icon8"></div>
+                <div class="resource-title"><b>Prevention</b> | youth.gov</div>
+              </div></a>
             </div>
-          </div>
+          </div>        
         </div>
       </section>
 
@@ -267,6 +293,48 @@ export default {
 @import '../assets/variables';
 
 $buttonHeight: 50px;
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.grid-container {
+  border-radius: $rad;
+  width: 60%;
+  height: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 12px;
+  text-align: center;
+  color: white;
+
+  .item {
+    background: rgba(white, 0.05);
+    height: 100%;
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 100ms;
+
+    &:hover {
+      transform: scale(0.98);
+      background: rgba(white, 0.1);
+    }
+
+    .resource-icon {
+      display: none;
+      background: red;
+      height: 36px;
+      width: 36px;
+      margin-bottom: 24px;
+    }
+  }
+}
 
 .about-container {
   display: flex;
@@ -323,7 +391,7 @@ $buttonHeight: 50px;
 }
 
 .subtitle {
-  width: 350px;
+  width: 400px;
   line-height: 2;
   opacity: 0.4;
 }

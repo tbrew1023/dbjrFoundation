@@ -371,5 +371,48 @@ p {
   .g-cursor {
     display: none !important;
   }
+
+  .swoop {
+    transform: scale(0.5) !important;
+  }
+
+  .button-container {
+    transform: scale(0.6);
+  }
+
+  .logo {
+    transform: scale(0.55) !important;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+
+  #fp-nav {
+    position: fixed !important;
+    bottom: 0px !important;
+    margin: 0px !important;
+    top: 80vh !important;
+    transform: scale(0.6);
+
+
+    li {
+      margin-bottom: 36px !important;
+    }
+
+    .fp-tooltip {
+      position: fixed !important;
+      font-size: 18px !important;
+      padding-left: 32px;
+      line-height: 22px;
+      display: none !important;
+    }
+
+    .active span {
+      opacity: 1 !important;
+      background: white !important;
+      border: 2px solid white;
+    }
+  }
 }
 </style>
